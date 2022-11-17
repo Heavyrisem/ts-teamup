@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "paths": {
+            "~module/*": [
+                "src/module/*"
+            ],
+            "~utils/*": [
+                "src/utils/*"
+            ],
+            "~types/*": [
+                "src/types/*"
+            ],
+            "~/*": [
+                "src/*"
+            ]
+        }
+    }
+}

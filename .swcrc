@@ -1,0 +1,34 @@
+{
+    "$schema": "https://json.schemastore.org/swcrc",
+    "exclude": [
+        "node_modules",
+        "jest.config.ts"
+    ],
+    "jsc": {
+        "target": "es2020",
+        "parser": {
+            "syntax": "typescript",
+            "tsx": false,
+            "decorators": false,
+            "dynamicImport": false
+        },
+        "paths": {
+            "~module/*": [
+                "./src/module/*"
+            ],
+            "~utils/*": [
+                "./src/utils/*"
+            ],
+            "~types/*": [
+                "./src/types/*"
+            ],
+            "~/*": [
+                "./src/*"
+            ]
+        },
+        "externalHelpers": false
+    },
+    "module": {
+        "type": "commonjs"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "extends": "./tsconfig.paths.json",
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "outDir": "./dist",
+        "baseUrl": ".",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "declaration": true,
+        "emitDeclarationOnly": true
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "jest.config.ts"
+    ]
+}
