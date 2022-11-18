@@ -1,23 +1,25 @@
 import { AxiosError } from 'axios';
 
 import { TeamUpAPI } from '~module/teamUpAPI';
-import { AuthInfo } from '~types/auth';
-import { EventHandlerFunction, STATUS } from '~types/bot';
-import { EventType, EventMap } from '~types/event';
+import { AuthInfo } from '~types/auth.interface';
+import { EventHandlerFunction, STATUS } from '~types/bot.interface';
+import { EventType, EventMap } from '~types/event.interface';
 
 export class TeamUP extends TeamUpAPI {
   private handler: { [key in EventType]?: EventHandlerFunction };
   status: STATUS;
+  readyHandler: () => void;
 
   constructor() {
     super();
     this.status = STATUS.OFFLINE;
     this.handler = {};
+    this.readyHandler = () => null;
   }
 
   private async main() {
-    console.log('Bot is Running');
     this.status = STATUS.ONLINE;
+    await this.readyHandler();
     while (this.status === STATUS.ONLINE) {
       try {
         const { events } = await this.event.getEvent();
@@ -37,7 +39,6 @@ export class TeamUP extends TeamUpAPI {
         }
       }
     }
-    console.log('Bot is Exiting');
   }
 
   private async eventHandler<K extends keyof EventMap>(
@@ -60,6 +61,10 @@ export class TeamUP extends TeamUpAPI {
 
   addHandler<K extends keyof EventMap>(type: K, callback: EventHandlerFunction<EventMap[K]>) {
     this.handler[type] = callback;
+  }
+
+  onReady(callback: () => void) {
+    this.readyHandler = callback;
   }
 
   async run(userAuth: AuthInfo) {

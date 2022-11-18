@@ -3,8 +3,9 @@ import axios, { AxiosInstance } from 'axios';
 import { EventAPI } from './event';
 import { MessageAPI } from './message';
 import { RoomAPI } from './room';
+import { UserAPI } from './user';
 
-import { AuthInfo, AuthRequest, AuthResponse } from '~types/auth';
+import { AuthInfo, AuthRequest, AuthResponse } from '~types/auth.interface';
 import { HOST } from '~utils/constants';
 
 export class TeamUpAPI {
@@ -12,12 +13,14 @@ export class TeamUpAPI {
   readonly message: MessageAPI;
   readonly room: RoomAPI;
   readonly event: EventAPI;
+  readonly user: UserAPI;
 
   constructor(axiosInstance = axios.create()) {
     this.axiosInstance = axiosInstance;
     this.message = new MessageAPI(axiosInstance);
     this.room = new RoomAPI(axiosInstance);
     this.event = new EventAPI(axiosInstance);
+    this.user = new UserAPI(axiosInstance);
   }
 
   async getTokenWithPassword(userAuth: AuthInfo) {

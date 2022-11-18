@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 
-import { EventResponse } from '~types/event';
+import { EventResponse } from '~types/event.interface';
 import { HOST } from '~utils/constants';
 
 export class EventAPI {
