@@ -5,6 +5,7 @@
         "jest.config.ts"
     ],
     "jsc": {
+        "baseUrl": "src",
         "target": "es2020",
         "parser": {
             "syntax": "typescript",
@@ -14,16 +15,16 @@
         },
         "paths": {
             "~module/*": [
-                "./src/module/*"
+                "module/*"
             ],
             "~utils/*": [
-                "./src/utils/*"
+                "utils/*"
             ],
             "~types/*": [
-                "./src/types/*"
+                "types/*"
             ],
             "~src/*": [
-                "./src/*"
+                "/*"
             ]
         },
         "externalHelpers": false

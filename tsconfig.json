@@ -12,7 +12,7 @@
     "declaration": true,
   },
   "exclude": [
-    "test/**/*",
+    "examples/**/*",
     "jest.config.ts",
     "dist"
   ]

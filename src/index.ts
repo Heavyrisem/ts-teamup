@@ -19,7 +19,7 @@ export class TeamUP extends TeamUpAPI {
 
   private async main() {
     this.status = STATUS.ONLINE;
-    await this.readyHandler();
+    this.readyHandler();
     while (this.status === STATUS.ONLINE) {
       try {
         const { events } = await this.event.getEvent();
@@ -37,6 +37,7 @@ export class TeamUP extends TeamUpAPI {
           console.log(err.message);
           // console.log(err);
         }
+        throw err;
       }
     }
   }
@@ -69,9 +70,9 @@ export class TeamUP extends TeamUpAPI {
 
   async run(userAuth: AuthInfo) {
     this.status = STATUS.UNAUTHORIZED;
-    console.log('Login...');
+    // console.log('Login...');
     await this.login(userAuth);
-    console.log('Login success');
+    // console.log('Login success');
 
     this.main();
   }

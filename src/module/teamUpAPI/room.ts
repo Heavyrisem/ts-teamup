@@ -39,7 +39,9 @@ export class RoomAPI {
    * @param users 유저 번호 리스트
    */
   async createRoom(team: number, users: number[]) {
-    return this.axiosInstance.post(`${HOST.EDGE}/room/${team}`, { users }).then((res) => res.data);
+    return this.axiosInstance
+      .post<{ room: number }>(`${HOST.EDGE}/room/${team}`, { users })
+      .then((res) => res.data);
   }
 
   /**

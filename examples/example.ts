@@ -1,13 +1,15 @@
+import { resolve } from 'path';
+
 import { config } from 'dotenv';
 
 import { TeamUP } from '../dist';
 import { AuthInfo } from '../dist/types/auth.interface';
 import { EventType } from '../dist/types/event.interface';
 
-config({ path: `${__dirname}/../.env` });
+config({ path: resolve(`${__dirname}/../.env`) });
 
 const auth: AuthInfo = {
-  username: process.env.username as string,
+  username: process.env.id as string,
   password: process.env.password as string,
   client_id: process.env.client_id as string,
   client_secret: process.env.client_secret as string,
@@ -15,7 +17,7 @@ const auth: AuthInfo = {
 const bot = new TeamUP();
 console.log(auth);
 
-bot.onReady(() => {
+bot.onReady(async () => {
   console.log('Bot is Ready');
 });
 
@@ -38,7 +40,28 @@ bot.addHandler(EventType.FEEDGROUP_JOIN, async (event) => {
 });
 
 bot.addHandler(EventType.FEED_FEED, async (event) => {
-  console.log(event.feed);
+  const feed = await bot.feed.getFeed(event.feed.feed);
+  console.log(feed);
+
+  if (feed.feedgroup === 86265) {
+    await bot.feed.likeFeed(event.feed.feed);
+    await bot.feed.createReply(event.feed.feed, {
+      content: 'feed reply test',
+    });
+    await bot.feed.createFeed(86265, {
+      content: 'create feed test',
+    });
+
+    const { room } = await bot.room.createRoom(feed.team, [feed.user]);
+    await bot.message.sendMessage(room, {
+      content: 'send message test',
+    });
+  }
+
+  if (feed.type === 2) {
+    const feedContent = await bot.feed.getMarkup(event.feed.feed);
+    console.log(feedContent);
+  }
 });
 
 bot.run(auth);

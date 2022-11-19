@@ -14,6 +14,9 @@ export interface AuthResponse {
   expires_in: number;
   token_type: 'bearer';
   refresh_token: string;
+  error?: string;
+  exception?: string;
+  error_description?: string;
 }
 
 export interface UserInfo {

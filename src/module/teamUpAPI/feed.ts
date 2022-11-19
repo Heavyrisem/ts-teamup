@@ -5,6 +5,7 @@ import {
   CreateFeedResponse,
   CreateReplyBody,
   CreateReplyResponse,
+  Feed,
   GetFeedsQuery,
   GetFeedsResponse,
   GetRepliesResponse,
@@ -13,7 +14,7 @@ import {
 import { HOST } from '~utils/constants';
 import { genURL } from '~utils/url';
 
-export class EventAPI {
+export class FeedAPI {
   private axiosInstance: AxiosInstance;
 
   constructor(axiosInstance: AxiosInstance) {
@@ -52,7 +53,9 @@ export class EventAPI {
    * @param feed 피드 번호
    */
   async getFeed(feed: number) {
-    return this.axiosInstance.get(`${HOST.EDGE}/feed/${feed}`).then((res) => res.data);
+    return this.axiosInstance
+      .get<Omit<Feed, 'feed'>>(`${HOST.EDGE}/feed/${feed}`)
+      .then((res) => res.data);
   }
 
   /**

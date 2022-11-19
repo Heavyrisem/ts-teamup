@@ -19,11 +19,24 @@ module.exports = {
   },
   ignorePatterns: ['dist', 'node_modules', '.eslintrc.js'],
   rules: {
-    'prettier/prettier': 'error',
+    'prettier/prettier': ['error', { "endOfLine": "auto" }],
     'import/order': [
       'error',
       {
-        groups: ['builtin', 'external', ['parent', 'sibling'], 'index'],
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'unknown'],
+        pathGroupsExcludedImportTypes: [],
+        pathGroups: [
+          {
+            pattern: '@nestjs/**',
+            group: 'external',
+            position: 'after',
+          },
+          {
+            pattern: '~*/**',
+            group: 'internal',
+            position: 'before',
+          },
+        ],
         alphabetize: {
           order: 'asc',
           caseInsensitive: true,
@@ -45,7 +58,8 @@ module.exports = {
     'lines-between-class-members': 'off',
     'no-await-in-loop': 'off',
     'import/prefer-default-export': 'off',
-    'class-methods-use-this': 'off'
+    'class-methods-use-this': 'off',
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["examples/**"] }]
   },
   settings: {
     'import/resolver': {
