@@ -1,7 +1,8 @@
 {
   "name": "ts-teamup",
   "description": "Typescript wrapper for https://tmup.com",
-  "version": "0.0.2",
+  "repository": "https://github.com/Heavyrisem/ts-teamup",
+  "version": "0.0.3",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {

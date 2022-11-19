@@ -1,52 +1,26 @@
-# TypeScript BoilerPlate
+# TeamUP API
 
 ## Description
 
-this is a boilerplate for typescript projects
-
-- SWC
-- ESlint
-- Prettier
-- Jest
+[TeamUP](https://http://team-up.github.io/) API Wrapper for nodejs
 
 ## Installation
 
 ```bash
-$ git clone
-$ yarn install
+$ npm install ts-teamup
+or
+$ yarn add ts-teamup
 ```
 
 ## Usage
 
-- customize package.json scripts for your project
+```typescript
+const bot = new TeamUP(); // Create Bot Client
 
-### Start
+...
+bot.addHandler(EventType, callback); // add event handler
+...
 
-```bash
-$ yarn start
-```
+bot.run(auth); // start bot with authentication info
 
-### Build
-
-```bash
-# remove build output
-$ yarn prebuild
-
-$ yarn build
-```
-
-### Test
-
-```bash
-$ yarn test
-
-# Test with coverage report
-$ yarn test:cov
-```
-
-### lint
-
-```bash
-$ yarn lint
-$ yarn lint:fix
 ```
