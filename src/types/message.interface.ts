@@ -1,9 +1,11 @@
+import { RoomType } from './room.interface';
+
 /** 종류 (1:일반, 2:파일, 3:초대, 4:퇴장) */
 export type MessageType = 1 | 2 | 3 | 4;
 /** 알림 (0:사용안함, 1:사용, type: chat.room) */
 export type AlertType = 0 | 1;
 /** 방 종류 (1:개인, 2:단체, type: chat.initbot) */
-export type RoomType = 1 | 2;
+// export type RoomType = 1 | 2;
 
 export interface ChatEvent {
   /** 팀 번호 */

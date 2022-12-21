@@ -1,7 +1,7 @@
 /** 읽음 상태 (0:전체, 1:읽은 알림만, type: inform.removefeed) */
 export type ReadType = 0 | 1;
 /** 지켜보기 (0:일반, 1:지켜보기, type: inform.removefeed) */
-export type WatchType = 0 | 1;
+export type InformWatchType = 0 | 1;
 
 export interface InformEvent {
   /** 피드 그룹 번호 (0:알림 전체) */
@@ -13,5 +13,5 @@ export interface InformEvent {
   /** 읽음 상태 (0:전체, 1:읽은 알림만, type: inform.removefeed) */
   read: ReadType;
   /** 지켜보기 (0:일반, 1:지켜보기, type: inform.removefeed) */
-  watch: WatchType;
+  watch: InformWatchType;
 }

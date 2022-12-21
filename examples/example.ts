@@ -2,9 +2,7 @@ import { resolve } from 'path';
 
 import { config } from 'dotenv';
 
-import { TeamUP } from '../dist';
-import { AuthInfo } from '../dist/types/auth.interface';
-import { EventType } from '../dist/types/event.interface';
+import { AuthInfo, EventType, TeamUP } from '../dist';
 
 config({ path: resolve(`${__dirname}/../.env`) });
 

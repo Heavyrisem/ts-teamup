@@ -77,3 +77,5 @@ export class TeamUP extends TeamUpAPI {
     this.main();
   }
 }
+
+export * from './types';

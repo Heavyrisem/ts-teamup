@@ -1,5 +1,5 @@
 /** 지켜보기 (0:안함, 1:사용, type: feed.feed,tagfeed,reply,tagreply,watch) */
-export type WatchType = 0 | 1;
+export type FeedWatchType = 0 | 1;
 /** 강제 알림 (0:안함, 1:사용, type: feed.feed,tagfeed) */
 export type PushType = 0 | 1;
 /** 알림탭 갱신 여부 (0:미참여, 1:최근 참여, 2:이전 참여, type: feed.reply,tagreply,like,likereply,removelikereply) */
@@ -21,7 +21,7 @@ export interface FeedEvent {
   /** 유저 번호 (type: feed.feed,reply,like,tagfeed,tagreply,removelike,likereply,removelikereply) */
   user: number;
   /** 지켜보기 (0:안함, 1:사용, type: feed.feed,tagfeed,reply,tagreply,watch) */
-  watch: WatchType;
+  watch: FeedWatchType;
   /** 강제 알림 (0:안함, 1:사용, type: feed.feed,tagfeed) */
   push: PushType;
   /** 댓글 번호 (type: feed.reply,tagreply,removereply,changereply,likereply,removelikereply) */
@@ -87,7 +87,7 @@ export interface Feed {
   /** 생성시간(unix) */
   created: number;
   /** 지켜보기 (0:안함, 1:사용) */
-  watch: WatchType;
+  watch: FeedWatchType;
   /** 자신의 좋아요 여부 (0:안함, 1:함) */
   liked: Liked;
   /** 태그 피드번호 (|로 구분, 비어있으면 태그 없음) */
